@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+html {
+  font-size: 60%;
+}
+body {
+  font-family: "Raleway", "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  font-display: swap;
+  color: #38b48b;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("./background.JPG") center center no-repeat;
+  background-size: cover;
+}
+
+.container {
+  width: 60%;
+  text-align: center;
+  padding: 40px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 80vw;
+  }
+}
+
+h1 {
+  font-weight: 600;
+  margin: 30px 50px;
+  font-size: 50px;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1px #20664f;
+  width: 60%;
+  padding-bottom: 5px;
+  color: #fff;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin: 0 20px;
+  font-size: 24px;
+}
+
+button {
+  width: 40%;
+  border: 0;
+  padding: 8px 20px;
+  margin: 20px 20px;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: #38b48b;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+*:focus {
+  outline: none;
+}
+
+.results-country {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+.results-city {
+  font-size: 3rem;
+}
+.results-temp {
+  font-size: 6rem;
+  margin: 10px 0;
+  /* color: #4fffca; */
+  color: #4fffc4;
+}
+.results-temp > span {
+  font-size: 3rem;
+  color: #38b48b;
+}
+.results-humi {
+  font-size: 4rem;
+  margin: 10px 0;
+  color: #4fffc4;
+}
+.results-humi > span {
+  font-size: 2rem;
+  color: #38b48b;
+}
+
+.results-cond {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}

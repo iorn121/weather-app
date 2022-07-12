@@ -1,5 +1,11 @@
 const Title = () => {
-  return <h1>React World Weather</h1>;
+  return (
+    <h1>
+      World Weather with
+      <br />
+      Discomfort Index
+    </h1>
+  );
 };
 
 export default Title;

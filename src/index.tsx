@@ -10,3 +10,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// https://qiita.com/SMAC/items/201c133d6eeaabf675a7
