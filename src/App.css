@@ -109,3 +109,21 @@ button:hover {
   justify-content: center;
   font-size: 2.5rem;
 }
+
+.loading {
+  border: 4px solid #38b48b;
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

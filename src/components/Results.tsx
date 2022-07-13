@@ -17,33 +17,29 @@ const Discomfort = styled.div`
   font-size: 5rem;
 `;
 const Results = (props: ResultsPropsType) => {
+  const { country, cityName, temperature, humidity, DI, conditionText, icon } =
+    props.results;
   return (
     <div>
-      {props.results.country && (
-        <div className="results-country">{props.results.country}</div>
-      )}
-      {props.results.cityName && (
-        <div className="results-city">{props.results.cityName}</div>
-      )}
-      {props.results.temperature && (
+      {country && <div className="results-country">{country}</div>}
+      {cityName && <div className="results-city">{cityName}</div>}
+      {temperature && (
         <div className="results-temp">
-          {props.results.temperature}
+          {temperature}
           <span>°C</span>
         </div>
       )}
-      {props.results.humidity && (
+      {humidity && (
         <div className="results-humi">
-          {props.results.humidity}
+          {humidity}
           <span>%</span>
         </div>
       )}
-      {props.results.DI && (
-        <Discomfort color={props.diColor}>{props.results.DI}</Discomfort>
-      )}
-      {props.results.conditionText && (
+      {DI && <Discomfort color={props.diColor}>{DI}</Discomfort>}
+      {conditionText && (
         <div className="results-cond">
-          <img src={props.results.icon} alt="icon" />
-          <span>{props.results.conditionText}</span>
+          <img src={icon} alt="icon" />
+          <span>{conditionText}</span>
         </div>
       )}
     </div>
