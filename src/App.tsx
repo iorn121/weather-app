@@ -2,6 +2,7 @@ import "./App.css";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Results from "./components/Results";
+import Loading from "./components/Loading";
 import { useState } from "react";
 
 type ResultsStateType = {
@@ -15,6 +16,7 @@ type ResultsStateType = {
 };
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [city, setCity] = useState<string>("");
   const [results, setResults] = useState<ResultsStateType>({
     country: "",
@@ -30,6 +32,7 @@ function App() {
   const url = `https://api.weatherapi.com/v1/current.json?key=ed30072647b34bb28ac53259221107&q=${city}&aqi=no`;
   const getWeather = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -59,14 +62,22 @@ function App() {
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon,
         });
-      });
+        setCity("");
+        setLoading(false);
+      })
+      .catch((err) => alert("エラーが発生しました"));
   };
   return (
     <div className="wrapper">
       <div className="container">
         <Title />
-        <Form setCity={setCity} getWeather={getWeather} />
-        <Results results={results} diColor={diColor} />
+        <Form city={city} setCity={setCity} getWeather={getWeather} />
+
+        {loading ? (
+          <Loading />
+        ) : (
+          <Results results={results} diColor={diColor} />
+        )}
       </div>
     </div>
   );
