@@ -25,6 +25,7 @@ function App() {
     conditionText: "",
     icon: "",
   });
+  const [diColor, setDiColor] = useState<string>("#38b48b");
 
   const url = `https://api.weatherapi.com/v1/current.json?key=ed30072647b34bb28ac53259221107&q=${city}&aqi=no`;
   const getWeather = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,12 +39,23 @@ function App() {
             Number(data.current.humidity) *
             (0.99 * Number(data.current.temp_c) - 14.3) +
           46.3;
+        if (di < 50) {
+          setDiColor("#4D38B5");
+        } else if (50 <= di && di < 60) {
+          setDiColor("#38A0B5");
+        } else if (60 <= di && di < 70) {
+          setDiColor("#4fffc4");
+        } else if (70 <= di && di < 80) {
+          setDiColor("#B58B38");
+        } else {
+          setDiColor("#B53862");
+        }
         setResults({
           country: data.location.country,
           cityName: data.location.name,
           temperature: data.current.temp_c,
           humidity: data.current.humidity,
-          DI: di.toString(),
+          DI: di.toFixed(1).toString(),
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon,
         });
@@ -54,7 +66,7 @@ function App() {
       <div className="container">
         <Title />
         <Form setCity={setCity} getWeather={getWeather} />
-        <Results results={results} />
+        <Results results={results} diColor={diColor} />
       </div>
     </div>
   );

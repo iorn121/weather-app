@@ -9,16 +9,13 @@ type ResultsPropsType = {
     conditionText: string;
     icon: string;
   };
+  diColor: string;
 };
 
-const coldColor = "blue";
-const properColor = "green";
-const dangerColor = "red";
-// const DiscomfortIndex = styled.div`
-//      color: ${(props)=>if (props<60) ${coldColor}};
-//      font-size: 3rem;
-// `;
-
+const Discomfort = styled.div`
+  color: ${(props) => props.color};
+  font-size: 5rem;
+`;
 const Results = (props: ResultsPropsType) => {
   return (
     <div>
@@ -40,7 +37,9 @@ const Results = (props: ResultsPropsType) => {
           <span>%</span>
         </div>
       )}
-      {props.results.DI && <div className="results-di">{props.results.DI}</div>}
+      {props.results.DI && (
+        <Discomfort color={props.diColor}>{props.results.DI}</Discomfort>
+      )}
       {props.results.conditionText && (
         <div className="results-cond">
           <img src={props.results.icon} alt="icon" />
